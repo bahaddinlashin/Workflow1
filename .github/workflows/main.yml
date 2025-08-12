@@ -3,18 +3,20 @@ name: First Workflow
 on:
   push:
     branches:
-     - main
+      - main
 
 jobs:
-  example-job:
+  new-job-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print Welcom Message
-        run: echo "Welcome to our first workflow"
-        # run: echo "Hello from amazing github actions"
-        #   echo "on->push->branches->-main"
-        #   echo "jobs->name-of-job->runs-on ubuntu:latest->steps->-name->Print Hello,run->echo 'hello'"
+      - name: checkout repo
+        uses: actions/checkout@v5.0.0
+
+      - name: touch file in ubnutu
+        run: touch test.txt
+
+      - name: list directions
+        run: ls -la
     
-     
-  
+       
+        
