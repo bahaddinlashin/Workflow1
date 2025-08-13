@@ -1,0 +1,24 @@
+name: Github Workflow Schedule Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose the environment"
+        type: choice
+        options:
+          - development
+          - test
+          - uot
+          - prod
+        default: development
+        required: true
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "echo environment"
+        run: echo "the environment is ${{ inputs.environment }}"
+
