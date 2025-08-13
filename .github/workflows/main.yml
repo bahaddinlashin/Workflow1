@@ -1,24 +1,31 @@
 name: First Workflow
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
+            - dev
+    
+    pull_request:
+        branches:
+            - main
+            - dev
 
 jobs:
-  new-job-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v5.0.0
-
-      - name: touch file in ubnutu
-        run: touch test.txt
-
-      - name: list directions
-        run: |
-          ls -la
-          echo "hello world"
+    test-env:
+        runs-on: ubuntu-latest
     
-       
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
         
+            - name: Run Test
+              run: |
+                    npm test
+    
+    test-env2:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print Hello World
+              run: echo "Hello World"
