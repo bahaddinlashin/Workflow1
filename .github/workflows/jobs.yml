@@ -1,0 +1,41 @@
+name: Workflow Jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "first Job"
+        run: |
+          echo "Job 1"
+          echo "first Job"
+  job_2:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - name: "second Job"
+        run: |
+          echo "job two"
+          echo "job name is ${{ github.job }}"
+
+  job_3:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - name: "third job"
+        run: |
+          echo "job 3"
+        
+  job_4:
+    runs-on: ubuntu-latest
+    needs: [job_2 , job_3]
+    steps:
+      - run: echo "job 4"    
+
+  job_5:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "job 5"
+        run: echo "job number 5"
