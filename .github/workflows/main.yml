@@ -16,7 +16,9 @@ jobs:
         run: touch test.txt
 
       - name: list directions
-        run: ls -la
+        run: |
+          ls -la
+          echo "hello world"
     
        
         
