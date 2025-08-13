@@ -1,4 +1,4 @@
-name: Github Workflow Schedule Trigger
+name: Deployment Environment
 
 on:
   workflow_dispatch:
