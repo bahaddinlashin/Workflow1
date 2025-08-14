@@ -17,13 +17,13 @@ jobs:
     steps:
       - name: "run in production"
         run: "production environment"
-        if: ${{ inputs.env == "prod" }}
+        if: ${{ inputs.env == 'prod' }}
       
       - name: "run in test env"
         run: echo "test environment"
-        if: ${{ inputs.env == "test" }}
+        if: ${{ inputs.env == 'test' }}
 
       - name: "run on dev"
         run: echo "run on develpment"
-        if: ${{ contains(inputs.env , "dev") }}
+        if: ${{ contains(inputs.env , 'dev') }}
   
