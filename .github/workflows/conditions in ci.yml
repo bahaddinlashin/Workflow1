@@ -1,0 +1,29 @@
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'choose one variable'
+        type: choice
+        options:
+          - prod
+          - test
+          - dev
+        default: dev
+      
+        
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "run in production"
+        run: "production environment"
+        if: ${{ inputs.env == "prod" }}
+      
+      - name: "run in test env"
+        run: echo "test environment"
+        if: ${{ inputs.env == "test" }}
+
+      - name: "run on dev"
+        run: echo "run on develpment"
+        if: ${{ contains(inputs.env , "dev") }}
+  
